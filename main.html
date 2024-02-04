@@ -1,16 +1,27 @@
-<!DOCTYPE html>
+const extendHex = (shortHex) => {
+  // Remove the # symbol if present
+  shortHex = shortHex.replace("#", "");
 
-<html>
+  // Check if the input is a valid short hex code
+  const isShortHex = /^[0-9a-fA-F]{3}$/.test(shortHex);
 
-<head>
-	<link rel="stylesheet" href="styles.css">
-</head>
+  if (isShortHex) {
+    // Extend the short hex code to a full hex code
+    const fullHex = shortHex
+      .split("")
+      .map((char) => char.repeat(2))
+      .join("");
 
-<body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+    // Add the # symbol and return the full hex code
+    return #${fullHex};
+  } else {
+    // Invalid short hex code
+    return "Invalid short hex code";
+  }
+};
 
-</body>
-
-</html>
+// Example usage:
+console.log(extendHex("#abc")); // expected output: "#aabbcc"
+console.log(extendHex("abc"));  // expected output: "#aabbcc"
+console.log(extendHex("#AbC")); // expected output: "#AABBCC"
+console.log(extendHex("#f09")); // expected output: "#ff0099"
